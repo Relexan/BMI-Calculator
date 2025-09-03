@@ -1,0 +1,54 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-size: cover;
+  shape-margin: 1rem;
+  font-style: italic;
+}
+
+input[type='number'] {
+  width: 100%;
+  color: var(--gunmetal);
+  font: inherit;
+  font-size: var(--fs-M);
+  font-weight: var(--fw-semi-bold);
+  margin-right: 1.5rem;
+  border: none;
+  outline: none;
+}
+
+input[type='number'] {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
+
+input[type='radio'] {
+  appearance: none;
+  height: 1.9375rem; /* 31px */
+  width: 1.9375rem; /* 31px */
+  background-color: transparent;
+  border: thin solid var(--dark-electric-blue);
+  border-radius: 50%;
+
+  &:checked {
+    border: none;
+    background-image: radial-gradient(
+      circle at center,
+      var(--blue) 40%,
+      hsl(from var(--blue) h s l / 0.15) 40%
+    );
+  }
+}

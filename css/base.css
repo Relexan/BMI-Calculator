@@ -1,0 +1,110 @@
+:root {
+  /*========== Colors ==========*/
+  --blue: hsl(227, 92%, 58%);
+  --gunmetal: hsl(215, 31%, 21%);
+  --dark-electric-blue: hsl(215, 17%, 45%);
+  --white: hsl(0, 0%, 100%);
+  --gradient-color: linear-gradient(
+    127deg,
+    hsla(184, 95%, 92%, 0%) 0%,
+    hsla(216, 95%, 92%, 100%) 100%
+  );
+
+  /*========== Font & Typography ==========*/
+  --ff-inter: 'Inter', serif;
+  --fw-regular: 500;
+  --fw-semi-bold: 600;
+  --fw-bold: 700;
+  --fs-XL: clamp(3rem, 2.647887323943662rem + 1.5023474178403755vw, 4rem);
+  --fs-L: clamp(2rem, 0.8571428571428572rem + 2.380952380952381vw, 3rem);
+  --fs-M: 1.5rem;
+  --fs-S: 1.25rem;
+  --fs-body: 1rem;
+  --fs-body-S: 0.875rem;
+
+  /*========== UTILS ==========*/
+  --drop-shadow: 16px 32px 56px hsla(211, 40%, 69%, 0.25);
+  --letter-space: -0.05em;
+  --corner-radius: 2.1875em;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: var(--fw-semi-bold);
+  color: var(--gunmetal);
+  line-height: 1.1;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--dark-electric-blue);
+  font-family: var(--ff-inter);
+  font-weight: var(--fs-body);
+  line-height: 1.5;
+}
+
+.wrapper {
+  --_max-width: 90rem; /* 1440px */
+  --_content-max-width: 72.5rem; /* 1160px */
+  --_padding-inline: 3rem; /* 48px */
+  --_column: 12;
+  --_gutter: 0.625rem; /* 10px */
+  --_column-size: (var(--_column) - 1) * var(--_gutter); /* column - gutter */
+
+  max-width: var(--_max-width);
+  margin-inline: auto;
+
+  display: grid;
+  grid-template-columns:
+    1fr
+    min(100% - var(--_padding-inline), var(--_content-max-width))
+    1fr;
+
+  > * {
+    grid-column: 2 / -2;
+  }
+}
+
+/* Tablet: 768px */
+@media (min-width: 48rem) {
+  .wrapper {
+    --_padding-inline: 5rem;
+
+    grid-template-columns:
+      1.875rem
+      repeat(
+        var(--_column),
+        calc(
+          (
+              min(100% - var(--_padding-inline), var(--_content-max-width)) -
+                var(--_column-size)
+            ) / var(--_column)
+        )
+      )
+      1.875rem;
+    column-gap: var(--_gutter);
+  }
+}
+
+/* Desktop: 1200px */
+@media (min-width: 75rem) {
+  .wrapper {
+    --_gutter: 2rem;
+
+    grid-template-columns:
+      1fr
+      repeat(
+        var(--_column),
+        calc(
+          (
+              min(100% - var(--_padding-inline), var(--_content-max-width)) -
+                var(--_column-size)
+            ) / var(--_column)
+        )
+      )
+      1fr;
+
+    column-gap: var(--_gutter);
+  }
+}
